@@ -6,8 +6,9 @@
 #
 package 'httpd'
 
-cookbook_file "/etc/httpd/conf/httpd.conf" do
-	source "httpd.conf"
+template "/etc/httpd/conf/httpd.conf" do
+	action :create
+	source "httpd.conf.erb"
 	notifies :restart, "service[httpd]"
 end
 
